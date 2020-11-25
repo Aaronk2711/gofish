@@ -11,6 +11,7 @@ public class GoFish {
     private final Player computer;
     private List<Card> deck;
     private final Scanner in;
+    private static boolean[] requestedThisTurn = {false, false, false, false, false, false, false, false, false, false, false, false, false};
     private String choice = null;
 
     public GoFish() {
@@ -161,6 +162,20 @@ public class GoFish {
             player1.takeCard(deck.remove(0));
             player2.takeCard(deck.remove(0));
         }
+    }
+
+    public void updateCurrentTurnRequests(Card rank){
+        requestedThisTurn[Card.getOrderedRank(rank.getRank()) - 2] = false;
+    }
+
+    public void resetCurrentTurnRequests(){
+        for(int i = 0; i < requestedThisTurn.length; i++){
+            requestedThisTurn[i] = true;
+        }
+    }
+
+    public static boolean[] getRequestedThisTurn(){
+        return requestedThisTurn;
     }
 
     ////////// PRIVATE METHODS /////////////////////////////////////////////////////

@@ -25,7 +25,7 @@ public class GoFish {
     public void askType() {
         do {
             System.out.println("Play against another player or computer?(Type P or C)");
-            choice = in.next().toUpperCase();
+            choice = in.nextLine().toUpperCase();
         } while (choice.equals("P") == false && choice.equals("C")== false);
         if (choice.equals("C")) {
             play();
@@ -302,6 +302,7 @@ public class GoFish {
 
                     return null;
                 } else {
+                    card = computer.getCardByNeed();
                     card = computer.getCardByNeed();
                     System.out.println("CPU: Got any... " + card.getRank());
                 }
